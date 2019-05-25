@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.reporting.mocks.model.RiskResult;
 import com.reporting.mocks.model.risks.Risk;
 import com.reporting.mocks.model.risks.aggregate.RiskAggregate;
@@ -21,28 +20,21 @@ import org.apache.flink.util.Collector;
 
 public abstract class RiskResultAggregator<R extends Risk, RA extends RiskAggregate>
         extends RichFlatMapFunction<RiskResult<R>, RA> {
+    private static final long serialVersionUID = 8855087204978115421L;
 
-    private static final long serialVersionUID = 1L;
-
-    protected Gson gson;
     protected abstract RA aggregate(RA accumulator, RiskResult<R> value);
     protected abstract RA createAccumulator(RiskResult<R> riskResult);
     protected abstract String getKey(RiskResult<R> riskResult);
 
-    protected RiskResultAggregator() {
-        this.gson = new Gson();
-    }
 
     protected List<String> generateKeys(RiskResult<R> riskResult) {
         ArrayList<String> projectionSet = new ArrayList<>();
         String[] bookElements = riskResult.getRisk().getBookName().split(":");
-        String riskType = riskResult.getRisk().getRiskType().toString();
 
         StringWriter keyElement = new StringWriter();
         for(String bookElement : bookElements) {
-            keyElement.write(bookElement);
             keyElement.append('/');
-            keyElement.write(riskType);
+            keyElement.write(bookElement);
             projectionSet.add(keyElement.toString());
         }
         return projectionSet;
@@ -50,6 +42,7 @@ public abstract class RiskResultAggregator<R extends Risk, RA extends RiskAggreg
 
     @Override
     public void flatMap(RiskResult<R> riskResult, Collector<RA> collector) throws Exception {
+        Gson gson = new Gson();
         for(String projectionKey : this.generateKeys(riskResult)) {
             String key = riskResult.getMarketEnvId().toString() + "/" + projectionKey;
             

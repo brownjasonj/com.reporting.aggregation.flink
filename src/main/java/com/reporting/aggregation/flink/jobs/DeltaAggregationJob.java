@@ -34,7 +34,7 @@ public class DeltaAggregationJob {
     }
 
     public void go() throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         FlinkKafkaConsumer010<RiskResult<Delta>> consumer = new FlinkKafkaConsumer010<>(this.RISKRESULT,
                 new RiskResultDeserilaizationSchema<Delta>(), this.kafkaProperties);

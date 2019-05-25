@@ -34,7 +34,7 @@ public class PvAggregationJob {
     }
 
     public void go() throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // env.setBufferTimeout(-1);
 
         FlinkKafkaConsumer010<RiskResult<Pv>> consumer = new FlinkKafkaConsumer010<>(this.RISKRESULT,

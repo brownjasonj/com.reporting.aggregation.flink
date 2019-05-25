@@ -35,7 +35,7 @@ public class GammaAggregationJob {
     }
 
     public void go() throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         FlinkKafkaConsumer010<RiskResult<Gamma>> consumer = new FlinkKafkaConsumer010<>(this.RISKRESULT,
                 new RiskResultDeserilaizationSchema<Gamma>(), this.kafkaProperties);
