@@ -71,6 +71,7 @@ public class GammaRiskResultAggregator extends RiskResultAggregator<Gamma, Gamma
                 this.aggregate(riskAccu, riskResult);
             } else {
                 riskAccu = this.createAccumulator(riskResult);
+                riskAccu.setBookName(projectionKey);
                 aggregateStates.put(riskKey, riskAccu);
             }
 

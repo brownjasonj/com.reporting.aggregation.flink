@@ -71,7 +71,7 @@ public class PvRiskResultAggregator extends RiskResultAggregator<Pv, PvAggregate
                 this.aggregate(riskAccu, riskResult);
             } else {
                 riskAccu = this.createAccumulator(riskResult);
-                riskAccu.setBookName(key);
+                riskAccu.setBookName(projectionKey);
                 aggregateStates.put(riskKey, riskAccu);
             }
 

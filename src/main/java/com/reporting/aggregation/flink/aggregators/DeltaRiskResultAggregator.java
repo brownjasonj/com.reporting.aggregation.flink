@@ -70,6 +70,7 @@ public class DeltaRiskResultAggregator extends RiskResultAggregator<Delta, Delta
                 this.aggregate(riskAccu, riskResult);
             } else {
                 riskAccu = this.createAccumulator(riskResult);
+                riskAccu.setBookName(projectionKey);
                 aggregateStates.put(riskKey, riskAccu);
             }
 

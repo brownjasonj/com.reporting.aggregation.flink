@@ -4,7 +4,7 @@
   <groupId>com.reporting.aggregation</groupId>
   <artifactId>flink</artifactId>
   <name>com.reporting.aggregation.flink</name>
-  <version>0.0.2</version>
+  <version>0.1.0</version>
   <url>http://www.example.com</url>
   <build>
     <pluginManagement />
@@ -59,24 +59,8 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
-          <artifactId>flink-core</artifactId>
-          <groupId>org.apache.flink</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>flink-shaded-asm</artifactId>
-          <groupId>org.apache.flink</groupId>
-        </exclusion>
-        <exclusion>
           <artifactId>flink-shaded-asm-6</artifactId>
           <groupId>org.apache.flink</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>commons-lang3</artifactId>
-          <groupId>org.apache.commons</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>commons-math3</artifactId>
-          <groupId>org.apache.commons</groupId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -93,14 +77,6 @@
         <exclusion>
           <artifactId>flink-clients_2.11</artifactId>
           <groupId>org.apache.flink</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>flink-shaded-guava</artifactId>
-          <groupId>org.apache.flink</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>commons-math3</artifactId>
-          <groupId>org.apache.commons</groupId>
         </exclusion>
       </exclusions>
     </dependency>

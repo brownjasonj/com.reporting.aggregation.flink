@@ -43,6 +43,11 @@
 			<version>${flink.version}</version>
 		</dependency>
 		<dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-flink</artifactId>
+            <version>${ignite.version}</version>
+        </dependency>
+		<dependency>
 			<groupId>com.reporting.mocks</groupId>
 			<artifactId>model</artifactId>
 			<version>0.12.0</version>
